@@ -10,6 +10,7 @@ lib-cov
 pids
 logs
 results
+playground
 
 node_modules
 npm-debug.log
