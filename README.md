@@ -30,11 +30,8 @@ bundle.addEntry('./index.js');
 bundle.bundle();
 ```
 
-Or :
 
-```bash
-$ browserify entry.js -p 'ignorify' -o browserify.js
-```
+**warning :** cli plugin options doesn't work since *scopify* is not a proper middleware but a wrapper. 
 
 ### Test
 
