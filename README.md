@@ -25,7 +25,7 @@ var browserify = require('browserify');
 var ignorify = require('ignorify');
 
 var bundle = browserify();
-bundle.register(ignorify);
+bundle.use(ignorify);
 bundle.addEntry('./index.js');
 bundle.bundle();
 ```
