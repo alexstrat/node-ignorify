@@ -31,7 +31,11 @@ bundle.bundle();
 ```
 
 
-**warning :** cli plugin options doesn't work since *scopify* is not a proper middleware but a wrapper. 
+Or :
+	
+```bash
+$ browserify entry.js -p 'ignorify' -o browserify.js
+```
 
 ### Test
 
