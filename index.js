@@ -1,27 +1,28 @@
-var path = require('path'),
-    commondir = require('commondir');
+var path = require('path');
+
+var ignore_tag = "@browserify-ignore";
 
 module.exports = function(body, file) {
   var bundle = this;
-  //console.log(file);
-  var re = /\/\/@browserify-ignore[\s\n]+.*require\([\'\"](.*)[\'\"]\).*/g;
-  var ignored = [];
+  var dir = path.dirname(file);
+  
+  var re = new RegExp("\x5C/\x5C/"+ignore_tag+"[\x5Cs\x5Cn]+.*require\x5C([\x5C'\x5C\"](.*)[\x5C'\x5C\"]\x5C).*", "g");
+  var ignoring = [];
 
   while (match = re.exec(body)) {
-    ignored.push(match[1]);
-    //console.log(match[1]);
+    var r = match[1];
+    ignoring.push(r.match(/^(\.\.?)?\//) ? path.resolve(dir, r) : r);
   }
 
-  var dir = path.dirname(file);
-  //console.log(dir)
-  var root = commondir(dir, ignored.concat(file));
-  file = path.resolve(process.cwd(), file);
-    
-  ignored.forEach(function (r) {
-      var x = r.match(/^(\.\.?)?\//) ? path.resolve(dir, r) : r;
-      //console.log(r);
-      bundle.ignore(x);
-  });
+  //ignoring-list is overriden by browserify
+  //at each call to ignore (bug? see #133)
+  var keys = [];
+  for(var i in bundle.ignoring) {
+    if(bundle.ignoring[i])
+      keys.push(i);
+  }
+
+  bundle.ignore(ignoring.concat(keys));
 
   return body;
 };
