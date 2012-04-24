@@ -2,7 +2,7 @@
   "author": "alexstrat",
   "name": "ignorify",
   "description": "Browserify middleware that allows to specify ignore rules in source code",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/alexstrat/node-ignorify.git"
