@@ -1,1 +1,0 @@
-var hellofoo = 'kk';
