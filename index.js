@@ -11,7 +11,10 @@ module.exports = function(bundle) {
 
     while (match = re.exec(body)) {
       var r = match[1];
-      ignoring.push(r.match(/^(\.\.?)?\//) ? path.resolve(dir, r) : r);
+      //browserify ignoring list doesn't care about absolute path...
+      //ignoring.push(r.match(/^(\.\.?)?\//) ? path.resolve(dir, r) : r);
+
+      ignoring.push(r.match(r));
     }
 
     //ignoring-list is overriden by browserify

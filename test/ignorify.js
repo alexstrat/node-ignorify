@@ -10,7 +10,7 @@ test('ignorify', function (t) {
     bundle.use(ignorify);
     bundle.addEntry(playground_dir+'index.js');
 
-    t.ok(bundle.ignoring[playground_dir+'bar.js']);
+    t.ok(bundle.ignoring['./bar.js']);
     t.ok(bundle.ignoring['dgram']);
 
     t.end();
