@@ -1,6 +1,8 @@
 node-ignorify
 =============
 
+### Not maintained anymore: use [tagify](https://github.com/alexstrat/node-tagify) instead
+
 Browserify middleware that allows to specify ignore rules in source code
 
 ### Installation
